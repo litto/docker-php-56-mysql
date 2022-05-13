@@ -1,0 +1,99 @@
+/*
+ UI replacement container
+ -------------------------------------- 
+*/
+.ui-finder-container { 
+	
+}
+
+/*
+ Replacement input (breadcrumb trail)
+ -------------------------------------- 
+*/
+.ui-finder-field {
+	background-image: url('../imgs/select_arrow.gif?1298351050');
+	background-position:  right center;
+	background-repeat:  no-repeat;
+}
+
+.ui-finder-field + .ui-icon {
+	position: absolute;
+	margin-top: -22px;
+	right: 8px;
+}
+
+/*
+ Hidden list container
+ -------------------------------------- 
+*/
+.ui-finder-list-container {
+	display: none;
+}
+
+
+/*
+ Drop down 
+ -------------------------------------- 
+*/
+.ui-finder-drop {
+	position: absolute;
+	z-index: 999;
+}
+
+.ui-finder-drop-list {
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.ui-finder-drop-list ul {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+.ui-finder-drop-footer {
+
+}
+
+.ui-finder-backbutton {
+	display: block;
+	text-decoration: none;
+	padding: 3px 5px;
+}
+
+.ui-finder-backbutton .ui-icon {
+	padding: 0;
+	margin-right: .5em;
+	height: 100%;
+	float: left;
+}
+
+
+/*
+ All lists 
+ -------------------------------------- 
+*/
+.ui-finder-list {
+
+}
+
+.ui-finder-list .ui-finder-list-item {
+	list-style: none;
+}
+
+.ui-finder-list .ui-finder-list-item a {
+	display: block;
+	outline-width: 0;
+	text-decoration: none;
+	width: 100%;
+}
+
+.ui-finder-list .ui-finder-list-item .ui-icon {
+	padding: 0;
+	margin-right: .5em;
+	float: right;
+}
+
+.ui-finder-list .ui-finder-list-item.active {
+	
+}

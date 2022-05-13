@@ -1,0 +1,5 @@
+RewriteEngine On
+RewriteRule index.html  index.php
+RewriteRule sector-([0-9]+)-([a-zA-Z0-9\-_]+).php sector.php?id=$1 [NC]
+RewriteRule service-([0-9]+)-([a-zA-Z0-9\-_]+).php service.php?id=$1 [NC]
+RewriteRule page-([0-9]+)-([a-zA-Z0-9\-_]+).php page.php?id=$1 [NC]

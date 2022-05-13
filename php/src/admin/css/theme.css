@@ -1,0 +1,28 @@
+body {
+	font-size: 12px;
+	font-family: Trebuchet MS, Tahoma, Verdana, Arial, sans-serif;
+}
+
+/* tutorial */
+
+#container { 
+
+	margin :50px 100px; 
+
+}
+
+p {
+	margin: 20px 0;
+}
+
+label {
+	display: block;
+}
+
+select, input[type="text"] {
+	width: 25%;
+}
+
+h1 { font-size: 2em; line-height: 2.25em; }
+h2 { font-size: 1.8em; line-height: 2em; }
+h3 { font-size: 1.5em; line-height: 1.75em; }

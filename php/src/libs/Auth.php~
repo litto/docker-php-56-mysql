@@ -1,0 +1,119 @@
+<?php
+
+class Auth extends MySql{
+	private $authId;
+	private $username;
+	private $password;
+	private $passKey;
+	private $email;
+	private $name;
+	private $dateCreated;
+	/*
+ * Date:8-16-2012
+ * Login Form , entry to the application
+ * Auhthor : Litto chacko
+ * Email:littochackomp@gmail.com
+*/
+	/*
+	 * Admin Panel authetiction Check
+	*/
+	function login($array){
+		$this->username	=	$array["username"];
+		$this->password	=	$array["password"];
+		echo $query	=	"SELECT * FROM `cms_auth` WHERE `username`='".$this->addFilter($this->username)."' ";
+		$rec		=	$this->fetchAll($query);
+		if(count($rec)>0){
+			$this->passKey	=	$rec[0]["pass_key"];
+			$crypt	=	new Crypt();
+			$crypt->crypt_key($this->passKey);
+			$password	=	$crypt->encrypt($this->password);
+			if($password==$rec[0]["password"]){
+				$this->authId	=	$rec[0]["auth_id"];
+				$this->email	=	$rec[0]["email"];
+				$this->name		=	$rec[0]["name"];
+				$this->dateCreated		=	$rec[0]["date_create"];				
+				return true;
+			}	
+		}		
+		return false;
+	}
+	function loginuser($array){
+		$this->username	=	$array["username"];
+		$this->password	=	$array["password"];
+		echo $query	=	"SELECT * FROM `cms_user` WHERE `email`='".$this->addFilter($this->username)."' ";
+		$rec		=	$this->fetchAll($query);
+
+
+		if(count($rec)>0){
+			echo "hai";
+
+			echo $password	= $this->password;
+ 
+$password1=base64_encode($password);
+			if($password1==$rec[0]["password"]){
+
+				echo $_SESSION["loggedUser"]	=	$rec[0]["user_id"];
+				echo $_SESSION["loggedName"]	=	$rec[0]["name"];	
+		$_SESSION["email"]	=	$rec[0]["email"];
+$_SESSION["password"]	=	$password;
+				return true;
+			}	
+		}
+		
+		return false;
+	}
+function loginuserman($array){
+		$this->username	=	$array["username"];
+		$this->password	=	$array["password"];
+		echo $query	=	"SELECT * FROM `cms_user` WHERE `email`='".$this->addFilter($this->username)."' ";
+		$rec		=	$this->fetchAll($query);
+
+
+		if(count($rec)>0){
+			echo "hai";
+
+			echo $password	= $this->password;
+ 
+$password1=base64_encode($password);
+			if($password1==$rec[0]["password"]){
+$k=$rec[0]["user_id"];
+				echo $_SESSION["loggedUser"]	=	$rec[0]["user_id"];
+				echo $_SESSION["loggedName"]	=	$rec[0]["name"];	
+		$_SESSION["email"]	=	$rec[0]["email"];
+$_SESSION["password"]	=	$password;
+				return true;
+			}	
+		}
+		
+		return false;
+	}
+	/*
+	 * Get logged admin details
+	*/
+	function getLoggedInfo(){
+		$query	=	"SELECT * FROM  `cms_auth` LIMIT 0,1";
+		return $this->fetchAll($query);
+	}
+	
+	/*
+	 * Update Account and Login information
+	*/
+	function updateAccount($inputs){
+		$insert	=	array(	'username'=>$this->addFilter($inputs['username']),
+											'password'=>$inputs['password'],
+											'pass_key'=>$inputs['key'],
+											'email'=>$this->addFilter($inputs['email']),
+											'name'=>$this->addFilter($inputs['name']),
+											'date_create'=>date("Y-m-d H:i:s"),											
+											);
+		$this->update($insert,"cms_auth",'');		
+		return true;
+	}
+	
+	
+	
+	
+}
+
+
+?>
